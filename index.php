@@ -10,7 +10,6 @@
 	require 'App.php';
 	$app = new App();
 	$last = $app->getLast()->fetch();
-	// var_dump($app->convertToURL("#####!!?;:Béozeozfezoif ezcopefzefezf d'avril"));
 ?>
 <!DOCTYPE html>
 <html>
