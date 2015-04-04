@@ -1,0 +1,41 @@
+@font-face{
+	font-family: "Courier New";
+	src: url('fonts/cour.ttf');
+}
+
+body, html{
+	font-family: "Courier New";
+	margin: 0;
+	padding: 0;
+}
+
+.pagination{
+	padding: 10px 0;
+}
+.pagination .previous{
+	float: left;
+}
+.pagination .next{
+	float: right;
+}
+
+.bd{
+	background-color: #ecf0f1;
+}
+.bd .titre{
+	padding: 10px;
+	font-weight: bold;
+}
+.bd .content{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 10px 10px;
+}
+.bd .content img{
+	max-width: 100%;
+}
+
+.footer{
+	text-align: right;
+}
