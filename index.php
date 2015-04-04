@@ -1,45 +1,53 @@
 <?php
-	require 'Database.php';
-	echo "<pre>";
+	require 'config.php';
+	require 'class/Utils.php';
+
+	require 'class/Database.php';
 	$db = Database::init('bdenascii');
-	$req = Database::$instance->query('SELECT * FROM bds');
-	// $res = $db->query("SELECT * FROM bds");
-	// var_dump($res);
+
+	require 'class/Bd.php';
+	$bd = new Bd();
+
+	echo "<pre>";
 	echo "</pre>";
 
-	require 'App.php';
-	$app = new App();
-	$last = $app->getLast()->fetch();
+	require 'class/Parser.php';
+	$params = Parser::getParams();
+	if(isset($params[0])){
+		if($bd->exists($params[0])){
+			$page = "bd";
+			$currentBD = $bd->getById($params[0]);
+			$bd->setCurrent($params[0]);
+		} else {
+			$page = "404";
+		}
+	} else {
+		$page = "bd";
+		$currentBD = $bd->getLast();
+		$bd->setCurrent($currentBD['id']);
+	}
+
+	echo "<pre>";
+	echo "</pre>";
+	$previous = $bd->getPrevious();
+	$next = $bd->getNext();
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>BD en ASCII</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>css/style.css">
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12 col-md-offset-4 col-md-4">
-				<div class="pagination">
-					<div class="previous"><a href="">&lt; Précédent</a></div>
-					<div class="next"><a href="">Suivant &gt;</a></div>
-				</div>
-				<hr/>
-				<div class="bd">
-					<div class="titre"><?=$last['title']?></div>
-					<div class="content"><img src="<?=$last['file']?>"></div>
-				</div>
-				<div class="footer">
-					<p>
-						Created by <a href="http://twitter.com/OzuOsbourne">Ozu Osbourne</a><br/>
-						Developed by <a href="http://twitter.com/BenjaminSansNom">Benjamin</a>
-					</p>
-				</div>
-			</div>
+			<?php
+				include 'pages/' . $page . '.php';
+			?>
 		</div>
 	</div>
 </body>
