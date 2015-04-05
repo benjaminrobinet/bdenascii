@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	require 'config.php';
 	require 'system/autoloader.php';
 
@@ -14,7 +16,7 @@
 	$params = Parser::getParams();
 	if(isset($params[0])){
 		if($params[0] == "admin"){
-			$page = "admin";
+			$page = "admin/admin";
 		} elseif($bd->exists($params[0])){
 			$page = "bd";
 			$currentBD = $bd->getById($params[0]);
@@ -43,12 +45,8 @@
 	<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>css/style.css">
 </head>
 <body>
-	<div class="container-fluid">
-		<div class="row">
-			<?php
-				include 'pages/' . $page . '.php';
-			?>
-		</div>
-	</div>
+		<?php
+			include 'pages/' . $page . '.php';
+		?>
 </body>
 </html>
