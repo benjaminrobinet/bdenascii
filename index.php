@@ -1,20 +1,21 @@
 <?php
 	require 'config.php';
-	require 'class/Utils.php';
+	require 'system/autoloader.php';
 
-	require 'class/Database.php';
-	$db = Database::init('bdenascii');
+	use \Classes\Utils;
+	use \Classes\Database;
+	use \Classes\Bd;
+	use \Classes\Parser;
 
-	require 'class/Bd.php';
+	$db = Database::init($mysql['db'], $mysql['host'], $mysql['user'], $mysql['password']);
+
 	$bd = new Bd();
 
-	echo "<pre>";
-	echo "</pre>";
-
-	require 'class/Parser.php';
 	$params = Parser::getParams();
 	if(isset($params[0])){
-		if($bd->exists($params[0])){
+		if($params[0] == "admin"){
+			$page = "admin";
+		} elseif($bd->exists($params[0])){
 			$page = "bd";
 			$currentBD = $bd->getById($params[0]);
 			$bd->setCurrent($params[0]);
@@ -26,11 +27,10 @@
 		$currentBD = $bd->getLast();
 		$bd->setCurrent($currentBD['id']);
 	}
-
-	echo "<pre>";
-	echo "</pre>";
-	$previous = $bd->getPrevious();
-	$next = $bd->getNext();
+	if(isset($currentBD)){
+		$previous = $bd->getPrevious();
+		$next = $bd->getNext();
+	}
 
 ?>
 <!DOCTYPE html>

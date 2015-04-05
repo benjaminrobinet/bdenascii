@@ -1,5 +1,7 @@
 <?php 
-	class Database extends PDO
+	namespace Classes;
+
+	class Database extends \PDO
 	{
 
 		public static $pdo = null;
@@ -19,5 +21,4 @@
 			self::$instance = new self($db, $host, $user, $password);
 		}
 	}
-
 ?>

@@ -1,4 +1,6 @@
 <?php
+	namespace Classes;
+
 	/**
 	* URL Parser for the Router (also for MVC)
 	*/

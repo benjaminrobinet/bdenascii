@@ -1,6 +1,10 @@
 <?php 
+	namespace Classes;
+
+	use \Classes\Database as Database;
+
 	/**
-	* 
+	* BD class
 	*/
 	class Bd {
 
