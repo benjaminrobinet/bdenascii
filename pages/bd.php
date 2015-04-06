@@ -1,7 +1,6 @@
 <?php
 	use \Classes\Utils;
 ?>
-<div class="top-buffer"></div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
@@ -13,8 +12,8 @@
 				</div>
 			</div>
 			<div class="bd">
-				<div class="titre"><?=$currentBD['title']?></div>
-				<div class="content"><img src="<?=WEBROOT . $currentBD['file']?>"></div>
+				<div class="titre"><?=htmlspecialchars($currentBD['title'])?></div>
+				<div class="content"><img src="<?=WEBROOT . UPLOAD_DIR . $currentBD['file']?>"></div>
 			</div>
 			<div class="footer">
 				<p>
