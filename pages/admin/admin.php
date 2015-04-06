@@ -6,7 +6,7 @@
 <?php
 	if(Admin::isConnected() && isset($_POST['title']) && isset($_FILES)){
 		if(Bd::Add($_POST['title'], $_FILES)){
-			Alerts::addAlert("The comic has been poted", "success");
+			Alerts::addAlert("The comic has been posted", "success");
 		} else {
 			Alerts::addAlert("Error in upload", "danger");
 		}
