@@ -3,7 +3,7 @@
 ?>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+		<div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
 			<div class="pagination">
 				<div class="row">
 					<div class="col-xs-5 previous"><?php echo !empty($previous) ? "<a href='" . WEBROOT . $previous['id'] . "/" . Utils::convertToURL($previous['title']) . "'>&lt; Précédent</a> " : null; ?></div>
