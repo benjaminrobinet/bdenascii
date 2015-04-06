@@ -9,6 +9,8 @@ body, html{
 	padding: 0;
 }
 
+.top-buffer { margin-top: 10px; }
+
 .pagination{
 	margin: 10px 0;
 }

@@ -22,14 +22,10 @@
 			$parsedurl = str_replace(WEBROOT, "", $url);
 			
 			# Split the parsed URL to get params
-			$params = split("/", $parsedurl);
+			$params = explode("/", $parsedurl);
 			$params = !empty($params[0]) ? $params : NULL;
 
 			return $params;
 		}
 	}
-	// $request = str_replace(WEBROOT, "", $_SERVER['REQUEST_URI']);
-
-	// $params = split("/", $request);
-	// $params = !empty($params[0]) ? $params : NULL;
 ?>

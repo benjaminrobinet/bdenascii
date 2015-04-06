@@ -43,10 +43,12 @@
 	<title>BD en ASCII</title>
 	<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>css/style.css">
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 </head>
 <body>
 		<?php
 			include 'pages/' . $page . '.php';
 		?>
+		<script src="<?=WEBROOT?>js/bootstrap.js"></script>
 </body>
 </html>
