@@ -19,10 +19,14 @@
 			$url = parse_url(self::getURL(), PHP_URL_PATH);
 
 			# Parse the URL to only keep params
-			$parsedurl = str_replace(WEBROOT, "", $url);
-			
+			if(WEBROOT != "/"){
+				$url = str_replace(WEBROOT, "", $url);
+			} else {
+				$url = substr($url, 1);
+			}
+
 			# Split the parsed URL to get params
-			$params = explode("/", $parsedurl);
+			$params = explode("/", $url);
 			$params = !empty($params[0]) ? $params : NULL;
 
 			return $params;
