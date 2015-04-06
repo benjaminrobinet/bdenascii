@@ -1,7 +1,7 @@
 <?php 
 	namespace Classes;
 
-	use \Classes\Database;
+	use \Classes\Database as Database;
 
 	/**
 	* BD class
@@ -12,13 +12,13 @@
 
 		public function getLast()
 		{
-			$bd = Database::$instance->query('SELECT * FROM comics ORDER BY id DESC')->fetch();
+			$bd = Database::$instance->query('SELECT * FROM bds ORDER BY id DESC')->fetch();
 			return $bd;
 		}
 
 		public function getById($id)
 		{
-			$bd = Database::$instance->query("SELECT * FROM comics WHERE id = $id")->fetch();
+			$bd = Database::$instance->query("SELECT * FROM bds WHERE id = $id")->fetch();
 			return $bd;
 		}
 
@@ -50,19 +50,6 @@
 		{
 			$next = $this->getById($this->current + 1);
 			return $next;
-		}
-
-		public static function add($title, $file)
-		{
-			$ext = Utils::getExt($file['file']['name']);
-			$extSize = strlen($ext);
-			$filename = Utils::convertToUrl($file['file']['name']);
-			$filename = substr($filename, 0, - $extSize) . '.' . $ext;
-
-			move_uploaded_file($file['file']['tmp_name'], UPLOAD_DIR . $filename);
-			$req = Database::$instance->prepare('INSERT INTO comics (title, file) VALUES (:title, :file)');
-			$res = $req->execute(array("title" => $title, "file" => $filename));
-			return true;
 		}
 	}
 ?>
