@@ -20,7 +20,7 @@
 			$_SESSION['username'] = Admin::$username;
 			Alerts::addAlert("You are now connected", "success");
 		} else {
-			Alerts::addAlert("Error: Verify your identifiants", "danger");
+			Alerts::addAlert("Error: Please check your username and password", "danger");
 			
 		}
 	}
